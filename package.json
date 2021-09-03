@@ -17,7 +17,7 @@
     "dev": "node dist/index.js",
     "dev2": "set GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:1080 && node -r global-agent/bootstrap dist/index.js",
     "release": "yarn build && yarn pkg",
-    "pkg": "pkg dist/index.js --out-path output"
+    "pkg": "pkg ."
   },
   "husky": {},
   "prettier": {
@@ -50,5 +50,10 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.15.0",
     "global-agent": "^2.1.12"
+  },
+  "bin": {
+    "scripts": "dist/index.js",
+    "assets": "../flow-call-sdk/node_modules/ast-types-flow",
+    "outputPath": "output"
   }
 }

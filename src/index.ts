@@ -50,12 +50,12 @@ const init=async ()=>{
         }   
         
         const job=await executeJobByCID(jobCid);
-        cron.schedule(job.cron,()=>{
+        cron.schedule(job.cron,async ()=>{
             logger.info("Start executing...");
             try{
                 const provider=new JsonRpcProvider(CHAIN_CONFIG[job.chainId].rpcUrl);
                 const wallet=new Wallet(walletKey,provider);
-                job.worker.execute(wallet);
+                await job.worker.execute(wallet);
                 logger.info("Job executed!!!");
             }
             catch(e){
