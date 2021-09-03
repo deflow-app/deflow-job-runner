@@ -14,7 +14,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "dev": "node dist/index.js ",
+    "dev": "node dist/index.js",
+    "dev2": "set GLOBAL_AGENT_HTTP_PROXY=http://127.0.0.1:1080 && node -r global-agent/bootstrap dist/index.js",
     "release": "yarn build && yarn pkg",
     "pkg": "pkg dist/index.js --out-path output"
   },
@@ -47,6 +48,7 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.15.0"
+    "@babel/preset-typescript": "^7.15.0",
+    "global-agent": "^2.1.12"
   }
 }

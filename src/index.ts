@@ -58,14 +58,15 @@ const init=async ()=>{
                 job.worker.execute(wallet);
                 logger.info("Job executed!!!");
             }
-            catch(error){
-                logger.error("Execute job error",error);
+            catch(e){
+                logger.error(e);
             }
         });
-
+        logger.info(`Cron expression: ${job.cron}`);
+        logger.info(`Chain ID: ${job.chainId}`);
         logger.info(`Deflow JobRunner for [${jobCid}] started.`);
-    } catch (error) {
-        logger.error("Got error when starting",error);
+    } catch (e) {
+        logger.error(e);
         process.exit();
     }
     
