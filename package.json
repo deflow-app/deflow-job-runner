@@ -16,9 +16,7 @@
     "test": "tsdx test",
     "dev": "node dist/index.js ",
     "release": "yarn build && yarn pkg",
-    "pkg": "pkg dist/index.js --out-path output",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "pkg": "pkg dist/index.js --out-path output"
   },
   "husky": {},
   "prettier": {

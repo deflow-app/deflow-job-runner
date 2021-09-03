@@ -1,8 +1,10 @@
 import { logger } from "./logger";
 import prompt from "prompt";
 import optimist from "optimist";
+import cron from "node-cron";
 
-let jobCid;
+let jobCid:string;
+
 
 const init=async ()=>{
     try {
@@ -16,8 +18,15 @@ const init=async ()=>{
                 required:true
             }
         ]);
-        jobCid=inputs.cid;
+        jobCid=inputs.cid as string;
         logger.info(`Got CID: ${jobCid}`);
+        const job={
+            cronExpr:"* * * * * *",
+            call:()=>{
+                logger.info(`run job[${jobCid}]...`);
+            }
+        }
+        cron.schedule(job.cronExpr,job.call);
         logger.info("Deflow JobRunner started.");
     } catch (error) {
         logger.error("Got error when starting",error);
