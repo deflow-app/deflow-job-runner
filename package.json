@@ -31,6 +31,7 @@
     "@types/node-cron": "^2.0.4",
     "@types/optimist": "^0.0.30",
     "@types/prompt": "^1.1.1",
+    "@ethersproject/experimental": "^5.0.1",
     "flow-call-sdk": "link:../flow-call-sdk",
     "fs": "^0.0.1-security",
     "global-agent": "^2.1.12",
