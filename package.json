@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -39,7 +39,7 @@
     "@types/node-cron": "^2.0.4",
     "@types/optimist": "^0.0.30",
     "@types/prompt": "^1.1.1",
-    "flow-call-sdk": "link:../flow-call-sdk",
+    "flow-call-sdk": "^1.0.0",
     "fs": "^0.0.1-security",
     "global-agent": "^2.1.12",
     "node-cron": "^3.0.0",

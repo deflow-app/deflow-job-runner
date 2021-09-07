@@ -14,5 +14,5 @@ yarn release
 Just run the corresponding executable file for your OS, follow the prompts to input the CID of job and wallet key.
 Or you could use the command below:
 ```shell
-<exeFileName> -c <cid> -k <walletKey>
+<exeFileName> -c <cid> -k <walletKey> -p <proxy>
 ```
