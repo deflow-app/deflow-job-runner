@@ -9,6 +9,10 @@ Build executable files for windows, linux and macOS.
 yarn release
 ```
 
+## Download Executable files
+
+https://www.mediafire.com/folder/1an8h0pqyitg9/deflow
+
 ## Usage
 
 Just run the corresponding executable file for your OS, follow the prompts to input the CID of job and wallet key.
