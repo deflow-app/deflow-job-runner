@@ -9,6 +9,7 @@ import { JsonRpcProvider } from "@ethersproject/providers";
 import {
     bootstrap
   } from 'global-agent';
+import JobWorker from "flow-call-sdk/dist/entities/JobWorker";
   
 bootstrap();
 
@@ -63,12 +64,24 @@ const init = async () => {
         }
 
         const job = await executeJobByCID(jobCid);
+        const provider = new JsonRpcProvider(CHAIN_CONFIG[job.chainId].rpcUrl);
+        const wallet = new Wallet(walletKey, provider);
+        const worker=job.worker as JobWorker;
+        logger.info("Approving tokens...");
+        await worker.approve(wallet);
+        logger.info("Approving done");
         cron.schedule(job.cron, async () => {
             logger.info("Start executing...");
             try {
-                const provider = new JsonRpcProvider(CHAIN_CONFIG[job.chainId].rpcUrl);
-                const wallet = new Wallet(walletKey, provider);
-                await job.worker.execute(wallet);
+                const results=await worker.execute(wallet);
+                results.forEach((result)=>{
+                    if(result.isSuccess){
+                        logger.info(`${result.runner?.name} succeeded.`);
+                    }
+                    else{
+                        logger.error(`${result.runner?.name} failed. \n%s`,result.errMsg);
+                    }
+                })
                 logger.info("Job executed!!!");
             }
             catch (e) {
