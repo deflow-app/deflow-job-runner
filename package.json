@@ -39,7 +39,7 @@
     "@types/node-cron": "^2.0.4",
     "@types/optimist": "^0.0.30",
     "@types/prompt": "^1.1.1",
-    "flow-call-sdk": "^1.0.4",
+    "flow-call-sdk": "^1.1.0",
     "fs": "^0.0.1-security",
     "global-agent": "^2.1.12",
     "node-cron": "^3.0.0",
