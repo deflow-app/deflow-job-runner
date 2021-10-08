@@ -124,6 +124,19 @@ const init = async () => {
         logger.info("Approving tokens...");
         await worker.approve(wallet);
         logger.info("Approving done");
+        logger.info(`Chain ID: ${jobExe.chainId}`);
+        const cronInputs=await prompt.get([
+            {
+                name: "cron",
+                description: `Cron expression: ${jobExe.cron}, press ENTER to confirm or input new expression`,
+                required: false
+            }
+        ]);
+        
+        if(cronInputs.cron){
+            jobExe.cron=cronInputs.cron as string;
+        }
+
         cron.schedule(jobExe.cron, async () => {
             logger.info("Start executing...");
             try {
@@ -142,8 +155,7 @@ const init = async () => {
                 logger.error(e);
             }
         });
-        logger.info(`Cron expression: ${jobExe.cron}`);
-        logger.info(`Chain ID: ${jobExe.chainId}`);
+        
         logger.info(`Deflow JobRunner for [${jobCid}] started.`);
     } catch (e) {
         logger.error(e);
